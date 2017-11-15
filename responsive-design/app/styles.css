@@ -1,0 +1,227 @@
+/************
+MEDIA QUERIES
+************/
+
+/*
+Media queries allows for seperate mobile, tablet, and desktop layouts
+They present different CSS rules, we want to display different images
+based on the user's device.
+*/
+
+/*************
+RETINA SCREENS
+*************/
+
+/*
+1 retina pixel = 4 standard pixels
+To render correctly on a retina device, an image needs to be twice as big as its final
+display dimensions.
+*/
+
+/********************
+RESPONSIVE SVG IMAGES
+********************/
+
+/*
+SVG images avoid screen resolution problems.
+Browsers automatically scale up SVGs for retina devices.
+*/
+
+/***********************
+RESPONSIVE RASTER IMAGES
+***********************/
+
+/*
+PNG, GIF, and JPG images are 'raster images', they are defined pixel-by-pixel instead of vectors
+They are much more sensitive to screen resolution than SVGs.
+
+Images should get nested in another container, because without it then the image would
+get distorted because flexbox would try to set its height to be the same as the container
+*/
+
+/****************************
+RESPONSIVE IMAGE OPTIMIZATION
+****************************/
+
+/*
+3 scenarios for optimizing responsive images:
+	1. A standard-resolution screen that doesn’t need a retina-quality image.
+	2. A retina mobile device that can use a standard-quality image
+	because it’s been scaled down so much.
+	3. A desktop layout that uses a wide image,
+	and an associated mobile layout that uses a taller image.
+
+
+Making images fit into mobile layouts while respecting their size:
+	Set images to stretch to 100% of their container while limiting their size with an
+	inline max-width style.
+
+Avoid making the user download large image files:
+	Use srcset to optimize for screen resolution
+	Use srcset + sizes to optimize for screen width
+	Use picture element for manual control over which image file is displayed
+*/
+
+/*************************
+SRCSET RETINA OPTIMIZATION
+*************************/
+
+/*
+Adding a srcset attribute lets us present specific images at a given screen resolution.
+You add an image then a 1x, 2x, or 3x. based on the quality of the device.
+2x and 3x are for retina screens, and 1x are for standard screens
+
+Older browsers that don't understand srcset fall back to the src attribute.
+*/
+
+/************************
+SCREEN WIDTH OPTIMIZATION
+************************/
+
+/*
+srcset also allows for specific images to work on specific devices
+
+w: character in srcset is a special unit used only for this type of
+image optimization, image width alone isn't enough for a device to
+determine which image it should load.
+
+size: attribute that defines a series of media quries along with the image
+rendered when that media query is in effect.
+*/
+
+/**************************
+ART DIRECTION USING PICTURE
+**************************/
+
+/*
+Optimizes layouts by sending different images to the user depending on their device.
+
+picture: element that is a wrapper
+
+source: element that loads images based on media queries
+
+In each source element:
+
+media: the attribute should be defined when the image is loaded.
+srcset: defines which image file should be loaded
+img: element used as fallback for older browsers
+
+This level of control is nice,
+but it doesn't let the browser automatically pick the optimal image.
+This means there is a potential loss of retina optimization.
+
+Recommended practice:
+Use the 1x and 2x version of srcset for images less than 600px
+Use the srcset plus sizes for bigger photos
+Use the picture when you're trying to do something fancy
+*/
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.page {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.section {
+	width: 100%;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu {
+	background-color: #5995da;
+	height: 80px;
+}
+
+.header {
+	background-color: #b2d6ff;
+	height: auto;
+	justify-content: inherit;
+	align-items: inherit;
+}
+
+.illustration img {
+	width: 100%;
+	display: block;
+}
+
+.content {
+	background-color: #EAEDF0;
+	height: 600px;
+}
+
+.sign-up {
+	background-color: #d6e9fe;
+}
+
+.feature-1 {
+	background-color: #f5cf8e;
+}
+
+.feature-2 {
+	background-color: #f09A9d;
+}
+
+.feature-3 {
+	background-color: #c8c6fa;
+}
+
+.photo img {
+	width: 100%;
+	display: block;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+	body {
+		background-color: #F09A9D;
+	}
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+	body {
+		background-color: #f5cf8e;
+	}
+
+	.sign-up,
+	.feature-1,
+	.feature-2,
+	.feature-3 {
+		width: 50%;
+	}
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+	body {
+		background-color: #b2d6ff;
+	}
+	.page {
+		margin: 0 auto;
+		width: 960px;
+	}
+	.feature-1,
+	.feature-2,
+	.feature-3 {
+		width: 33.3%;
+	}
+	.header {
+		height: 400px;
+	}
+	.sign-up {
+		height: 200px;
+		order: 1;
+	}
+	.content {
+		order: 2;
+	}
+}

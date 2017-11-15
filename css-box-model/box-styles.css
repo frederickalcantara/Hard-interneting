@@ -1,0 +1,193 @@
+/***************
+RESETTING STYLES
+***************/
+
+/*
+Different browsers have different default styles for all of their HTML elements,
+which can be difficult to create consistent stylesheets.
+
+You can override default styles to predictable value using the (universal) * selector.
+This selector will match every HTML, and adding 0 on padding and margin with a
+box-sizing value of border-box then this will reset the margin and padding
+properties for the web page.
+
+General resets like this are found at most global CSS stylesheets on the web.
+This will generally override setting from default browser styles
+
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*************
+ALIGNING BOXES
+*************/
+
+/*
+Text-align aligns the content and inline boxes inside of a block-level element.
+Text-align is completely unrelated to block-level alignment
+
+3 ways for aligning block-level elements:
+
+Centering: Auto-margins
+Left/Right: Floats
+Complete Control: Flexbox
+
+Auto-margin Centering
+margin: vertical (num)px horizontal 0px
+*/
+
+
+body {
+	text-align: center;
+}
+
+/**************
+WIDTH & HEIGHT
+**************/
+
+/*
+The width of block boxes are automatically set based on the width of the parent container.
+The height of block boxes are based on the content it contains.
+
+If you add text to an inline element, it will expand (horizontally) to accomodate it.
+If you add text to a block element, it will expand (vertically) to accomodate it.
+This default behavior can be changed with white-space and overflow properties
+
+Box-sizing is a property that calculates the width of a box, by default it has a value of content-box
+Which bases the size of the width that the content fills up.
+
+If you change the box size property to the value of border-box,
+then will take up the size of the box based on the width.
+Content width will not be determined automatically.
+It's considered best practice to do this for boxes
+*/
+
+
+h1, p {
+	background-color: #dde0e3;
+}
+
+/********
+BORDER
+********/
+
+/*
+Border is the line between the padding and the margin
+Border styling order: Size Style Color
+There can also be top, right, bottom, and left styling applied to borders as well
+One can use a 1px solid red border for debugging purposes
+*/
+
+h1 {
+	padding: 50px;
+	border-bottom: 1px solid #5d6063;
+}
+
+/************************
+PADDING & MARGIN INSIGHT
+************************/
+
+/*
+Padding deals with the space between the content and the border
+Margins define the spave outside of an element's border
+
+
+padding-top: 20px; One could use em units to make margins scale with the base font size
+padding-bottom: 20px;
+padding-left: 10px;
+padding-right: 10px;
+
+padding: 20px 10px; Vertical Horizontal Shorthand for the above style ^^
+
+The same rules that apply for padding vertical/horizontal styling also apply for margins
+*/
+
+
+p {
+	padding: 20px 0 20px 10px; /* PADDING & MARGIN: Top Right Bottom Left clockwise rule for padding and margin */
+	margin-bottom: 50px;
+	margin-top: 25px;
+}
+
+/***********************
+VERTICAL MARGIN COLLAPSE
+************************/
+
+/*
+When you have two boxes with vertical margins sitting right next to each other, they'll collapse.
+Instead of adding margins together, on the biggest margin is displayed.
+It's useful for define the minimum space between other elements
+
+Putting an invisible element (ex. div) is one way to solve problem
+
+One could also use padding to space out block elements instead of margins.
+However, this is effective when you're not using the padding for anything else.
+
+Another solution to avoid margin collapse is to stick to a bottom-only or top-only margin convention
+
+Flexboxs don't have collapsing margins, so this won't be a problem for modern websites
+*/
+
+
+em, strong {
+	background-color: #b2d6ff;
+	display: inline; /* This is the default for em and strong */
+}
+
+/*********************
+INLINE & BLOCK INSIGHT
+*********************/
+
+
+/*
+Box behavior can be changed to inline or block based on what you want to do with it
+Inline boxes don't affect vertical spacing, they don't determine layout. Their only function is to style stuff inside of a block.
+
+The width of inline boxes are based on the content it contains.
+Inline boxes completely ignore the top and bottom margins of an element while block-levels do not.
+On the other hand, if you style padding then inline will work the same way that block would for padding
+However, inline will not affect the vertical layout of the surrounding boxes.
+
+Inline format runs of text inside of a block, which will have a limited impact on the overall layout of a page.
+If you want to alter vertical spacing, then you HAVE to be working with block-level elements.
+
+CHECK THE DISPLAY PROPERTY IF YOU WANT ALTER WHICH ONE
+*/
+
+strong {
+	margin: 50px;
+}
+
+/************
+GENERIC BOXES
+************/
+
+/*
+Sometimes a generic box is needed for styling a web page.
+Div and span are container elements that have no effect on the semantic structure of an HTML doc.
+They are useful for adding CSS to sections of a page.
+
+Div elements are block level while span elements are inline level.
+*/
+
+div {
+	color: #FFF;
+	background-color: #5995da;
+	font-weight: bold;
+	padding: 20px;
+	text-align: center;
+	border: 2px solid #5D6063;
+	border-radius: 5px;
+	width: 200px;
+	box-sizing: border-box;
+	margin: 20px auto;
+}
+/*
+When you set the left and right margin of a block-level element to auto, then it will the center the block in its parent element
+This only works on blocks that have an explicit width defiend on them.
+If there was no defined width, then the "center" alignment wouldn't work.
+*/

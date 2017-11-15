@@ -1,0 +1,301 @@
+/********
+FLOAT USE
+*********/
+
+/*
+Use floats only when you need text to flow around a box or when you need to support legacy browsers.
+Other than these reasons, try to use flexbox as much as possible
+*/
+
+/****************
+FLEXBOX OVERVIEW
+****************/
+
+/*
+Flexbox uses 2 types of boxes: flex containers and flex items
+
+Flexbox container: group a bunch of flex items together and define how they're positioned.
+Flex item: let their container know how many things it needs to position.
+*/
+
+/***************
+FLEX CONTAINERS
+***************/
+
+/*
+Use the display property (value: flex) to work with flexbox
+*/
+
+/************************
+FLEX HORIZONTAL ALIGNMENT
+************************/
+
+/*
+justify-content: property that defines the horizontal alignment of its items
+
+justify-content: center has the same effect as margin: 0 auto
+
+A common theme in flexbox is to manipulate items through their containers instead of the direct item you want to manipulate
+
+flex-start: property aligns the flex container to the left.
+
+flex-end: property aligns the flex container to the right.
+
+space-around and space-between are the properties that are only useful when you have multiple flex items in a container
+
+space-around: property that speads flex items across the entire width
+
+space-between: property that spreads flex items across the entire width,
+but also adds extra space between items
+*/
+
+/******************
+GROUPING FLEX ITEMS
+******************/
+
+/*
+Flex containers only know how to position elements that are one level dep.
+They don't care what's inside their flex items.
+Grouping flex items inside a div can add more alignment to it.
+*/
+
+/**********************
+FLEX VERTICAL ALIGNMENT
+**********************/
+
+/*
+A container has to have an explicit height in order to align in vertically
+
+align-items:property that defines the vertical alignment of a flex container
+
+Most of the options are similar to justify-content:
+
+center: property aligns flex items in the middle
+
+flex-start: property aligns flex items at the top
+
+flex-end: property aligns flex items at the bottom
+
+stretch: property that will make flex items strech the container vertically
+stretch does respect the width of each flex item
+
+baslin: property that aligns items as their baslines align
+*/
+
+/******************
+WRAPPING FLEX ITEMS
+******************/
+
+/*
+Items can be rendered as a grid: It can change their alignment, direction,
+order, and size as well.
+
+flex-wrap: property that creates a grid
+*/
+
+/***********************
+FLEX CONTAINER DIRECTION
+***********************/
+
+/*
+Direction: renders items horizontally or vertically
+
+** flex automatically renders flex items as a row **
+
+flex-direction: property that renders items as a row or column
+
+FLEX-DIRECTION: ROW
+
+justify-content: horizontal alignment
+align-items: vertical alignment
+
+FLEX-DIRECTION: COLUMN
+
+justify-content: vertical alignment
+align-items: horizontal alignment
+*/
+
+/*******************
+FLEX CONTAINER ORDER
+*******************/
+
+/*
+flex-direction also offers control over the order in which items
+appear via the row-reverse and column-reverse properties
+
+row: flex items are left to right
+row-reverse: flex items are right to left
+
+column: flex items are top to bottom
+column-reverse: flex items are bottom to top
+*/
+
+/**************
+FLEX ITEM ORDER
+**************/
+
+/*
+order: property that the order of flex items without affecting surrounding items
+
+The default value is 0, increasing or decreasing the value moves items
+to the right or left.
+
+order works across row/column boundaries
+*/
+
+/******************
+FLEX ITEM ALIGNMENT
+******************/
+
+/*
+align-self: property that aligns flex items
+align-self will override the align-items value from its container.
+
+align-self has the same values as the align-items property:
+center
+flex-start
+flex-end
+stretch
+baseline
+*/
+
+/*************
+FLEXIBLE ITEMS
+*************/
+
+/*
+Flex items are flexible, they can shrink and stretch to match the width
+of their containers.
+
+flex: property that defines a flexible width of individual items in a flex container
+
+flex distributes space into the items themselves, this allows for full
+control over how flex items fit into their containers
+
+flex:initial falls back to the item's explicit width property
+
+Only items with a flex value other than initial get resized according
+to the browser window
+*/
+
+/************************
+FLEX ITEMS & AUTO MARGINS
+************************/
+
+/*
+Auto-margins in flexbox are unique, they can be used as an alternative
+to an extra div when trying to align a group of items to the left/right of a container.
+
+Auto-margins can be thought of as a 'divider' for flex items in the same container
+It eats up all the extra space in a flex container and move everything to the
+other side as much as possible.
+*/
+
+/************
+FLEX USE CONS
+************/
+
+/*
+Flexbox is not good at slightly tweaking element positions and preventing
+them from interacting with the rest of the page.
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.menu-container {
+	color: #ffffff;
+	background-color: #5995da;
+	padding: 20px 0;
+	display: flex;
+	justify-content: center;
+}
+
+.menu {
+	width: 900px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.signup {
+	margin-left: auto;
+}
+
+.login {
+	margin-left: 20px;
+}
+
+.header-container {
+	color: #5995da;
+	background-color: #d6e9fe;
+	display: flex;
+	justify-content: center;
+}
+
+.header {
+	width: 900px;
+	height: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.photo-grid-container {
+	display: flex;
+	justify-content: center;
+}
+
+.photo-grid {
+	width: 900px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+	flex-direction: row;
+}
+
+.photo-grid-item {
+	border: 1px solid #ffffff;
+	width: 300px;
+	height: 300px;
+}
+
+.first-item {
+	order: 1;
+}
+
+.last-item {
+	order: -1;
+}
+
+.social,
+.subscribe {
+	align-self: flex-end;
+	margin-bottom: 20px;
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-item {
+	border: 1px solid #ffffff;
+	background-color: #D6E9FE;
+	height: 200px;
+	flex: 1;
+}
+
+.footer-three {
+	flex: 2;
+}
+
+.footer-one,
+.footer-three {
+	background-color: #5995DA;
+	flex: initial;
+	width: 300px;
+}

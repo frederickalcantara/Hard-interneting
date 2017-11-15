@@ -1,0 +1,170 @@
+/********
+CLASSES
+********/
+
+
+/*
+	Elements can be have the same class, divs are generally used to group together
+	multiple HTML elements. This is usefiul for SEO purposes.
+
+	Multiple classes can be applied to the same element as well
+
+	Pseudo-classes are classes that come with browsers that do certain things,
+	such as target specific elements or behaviors around an element
+*/
+
+
+/*********************
+CLASS NAME CONVENTIONS
+**********************/
+
+
+/*
+It's best practice to name a class based on the customization you are looking to do
+*/
+
+.page {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.synopsis {
+	color: #7E8184;
+	font-style: italic;
+}
+
+.synopsis em {
+	font-style: normal;
+}
+
+
+/*********************
+BUTTON: PSEUDO CLASSES
+**********************/
+
+.button:link,
+.button:visited {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	background-color: #5995da;
+	font-weight: bold;
+	padding: 20px;
+	text-align: center;
+	border: 2px solid #5D6063;
+	border-radius: 5px;
+	width: 200px;
+	margin: 20px auto;
+}
+
+.button:hover,
+.button:visited:hover {
+	color: #ffffff;
+	background-color: #76aeed;
+}
+
+.button:active,
+.button:visited:active {
+	color: #ffffff;
+	background-color: #5995da;
+}
+
+
+
+.call-to-action:link,
+.call-to-action:visited {
+	font-style: italic;
+	background-color: #eeb75a;
+}
+
+.call-to-action:hover,
+.call-to-action:visited:hover {
+	background-color: #f5cf8e;
+}
+
+.call-to-action:active,
+.call-to-action:visited:active {
+	background-color: #eeb75a;
+}
+
+
+/*******************
+LINK: PSEUDO CLASSES
+*******************/
+
+a:link {
+	color: blue;
+	text-decoration: none;
+	/* General unvisited link */
+}
+
+a:visited {
+	color: purple;
+	/* This class is applied the link has already been clicked on */
+}
+
+a:hover {
+	color: aqua;
+	text-decoration: underline;
+	/* When the link is being hovered over by the mouse but not yet clicked */
+}
+
+a:active {
+	color: red;
+	/* This happens when the link is being clicked on */
+}
+
+a:visited:hover {
+	color: orange;
+	/* Hovering over a clicked link */
+}
+
+a:visited:active {
+	color: red;
+	/* This overrides the effect of the visited:hover pseudo class effect */
+}
+
+/************************
+STRUCTURAL PSEUDO-CLASSES
+*************************/
+
+p:last-of-type {
+	margin-bottom: 50px;
+}
+
+p:first-of-type {
+	color: #7E8184;
+	font-style: italic;
+}
+
+/*
+These types of pseudo classes work if they are not inside a container
+*/
+
+
+/*
+There is a caveat to this though. If you add the div class and use a > symbol
+then you can target which element you want.
+*/
+.page > p:first-of-type {
+	color: #7E8184;
+	font-style: italic;
+}
+
+/***********
+ID SELECTOR
+***********/
+
+#button-2 {
+	background-color: #D55C5F;
+}
+
+/*
+It's not good practice to style with IDs unless you need it to override your class.
+ID take higher importance than classes regardless of where it is in your CSS file.
+
+You can use a ID to navigate to a specific part of the page using the href attribute.
+
+IDs can break the styling of classes of which elements will lose the styling they had
+for a class if an ID is in place regardless of specificity or cascading order.
+*/

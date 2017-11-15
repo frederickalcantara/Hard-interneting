@@ -1,0 +1,122 @@
+/******************
+POSITIONED ELEMENTS
+******************/
+
+/*
+Most elements have a static/0 position.
+Positioned elements are those that are fixed, relative, or absolute.
+
+Positioned elements use properties of top, right, bottom, and left to move
+elements to where they need to be.
+*/
+
+/*******************
+RELATIVE POSITIONING
+*******************/
+
+/*
+Relative positioning: moves elements around relative to where they would
+normally appear in the static flow of the page. Useful for moving boxes around
+when the default flow is a tad off.
+
+They work similar to margins except that neither the surrounding elements or
+parent element are affected by the any values used to offset the element.
+
+Think of these offsets as being applied AFTER
+the browser finishes laying out the page.
+*/
+
+/*******************
+ABSOLUTE POSITIONING
+*******************/
+
+/*
+Absolute positioning: similar to relative positioning. Instead the offset is
+relative to the entire browser window not the original position of the element
+
+Interestingly, absolute completely removes an element
+from the normal flow of the page.
+
+On the other hand, relative position still has a space where the
+positioned element used to be.
+absolute position completely vanishes in that space.
+
+Absolute positioning becomes much more practical when it's relative to some
+other element that's in the static flow of the page.
+
+Coordinates for absolute elements are always relative to the closest
+container that's a positioned element. It only falls back to being relative
+when none of its ancestors are positioned.
+
+This is useful for mobile layouts whenever we an element as a specific position
+relative to its parent element.
+*/
+
+/****************
+FIXED POSITIONING
+****************/
+
+/*
+Fixed positioning: similar to absolute positioning, the main difference is
+that fixed elements don't scroll with the rest of the page.
+*/
+
+/************************
+POSITIONING FOR ANIMATION
+************************/
+
+/*
+Animations are the primary use examples for relative and absolute positioning.
+Both relative and absolute allow JS to move elements around while avoiding
+any kind of interaction with surrounding elements.
+*/
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 1200px;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+}
+
+.example {
+	display: flex;
+	justify-content: space-around;
+	margin: 50px 0;
+	width: 800px;
+	background-color: #d6e9fe;
+}
+
+.item img {
+	display: block;
+}
+
+.item-relative {
+	position: relative;
+	bottom: 30px;
+	right: 30px;
+}
+
+.item-absolute {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.absolute {
+	position: relative;
+}
+
+.item-fixed {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}

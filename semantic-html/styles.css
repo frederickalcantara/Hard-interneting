@@ -1,0 +1,234 @@
+/***************
+DOCUMENT OUTLINE
+****************/
+
+/*
+HTMl5 has semantic tags such as article, section, nav, header, footer, asides, address,
+time, figure, and figcaption that give semantic meaning to the content itself.
+It makes it easier for search engines, screen reader, or other machines to identify
+different parts of the website. It also helps keep your site organized.
+
+Every HTML doc has an 'outline', a heirarchy that search engines and screen readers view
+based on the content of the page. The <h1> and <h6> heading elements all contribute to a
+page's document outline.
+
+Specific levels of headings create sections of headers based on where they are.
+A higher level of heading will create a "parent"/higher-level section in the outline.
+A similar level of heading will create a 'sibling'/same-level section in the outline.
+A lower level of heading will create a 'child'/lower-level section in the outline.
+
+Headings significantly influence the way search engines determine what's important on your
+web page. They are one of the most semantic things on a web page.
+*/
+
+/******
+ARTICLE
+******/
+
+/*
+<article>: element that represents an independent article in a web page. It should only wrap
+around content that can be pulled out of your page and distributed in a different context.
+
+It's a mini web page in your HTML document, they have their own headers, footers, and
+document outline that are isolated from the rest of your site.
+
+It's ok to use multiple <article> elements, ex: a page with a bunch of blog posts.
+*/
+
+/******
+SECTION
+******/
+
+/*
+<section>: element that's similar to an article, except it doesn't need to make sense
+outside of the context of the document. It's an explicit way to defined the sections
+in a document outline. This is useful whenever we need a container to wrap a section
+for layout purposes.
+
+<section> give extra semantic structure and are useful for any CSS styling.
+
+<SECTION> AND THE DOCUMENT OUTLINE
+
+<section> elements take over the nesting structure of HTML elements, they replace heading
+levels. This isn't a good practice to do as browsers, screen readers, and some search
+engines don't properly render the effect of section. Instead, a page's outline should
+always be defined via headings. Section should only be used as a replacement for div's
+when appropriate.
+
+Sections should contain at least one heading, or else it will named 'untitled section' to
+your document outline.
+
+Use section to be defined as wrapping implicitly defined sections of your page.
+Don't use it for self-contained content (that's what <article> is for) or
+when it's purely for layout purposes.
+*/
+
+/**
+NAV
+**/
+
+/*
+<nav> lets you mark up the various navigation sections of your site.
+Navs are used for main site navigation, links to related pages in a sidebar,
+tables of content, and pretty much any group of links.
+
+This is useful for search engines, it helps them quickly identify the structure of your
+entire website. As in the case with the <asides> element, you can include multiple <nav>
+elements on a single page if you have different sets of related links.
+*/
+
+/*****
+HEADER
+*****/
+
+/*
+<header> represents introductory content for a section, article, or an entire web page.
+'Intro content' can be anything from the company logo to nav bars or author information.
+
+It's good practice to wrap a website's name/logo and main nav bar in a <header>.
+
+They are only associated with the nearest sectioning element:
+body, section, or article element.
+
+You can use multiple headers to add intro content to different parts of a document.
+Ex. titles, author names, or publicaiton dataes is information that's good for a header.
+
+Without a header, search engines and screen readers wouldn't p elements are seperate from
+each other. They are like <section>, which can also serve as CSS hooks.
+*/
+
+/*****
+FOOTER
+*****/
+
+/*
+<footer> elements are similar to headers, except they are at the end of an article/website
+as opposed to the beginning.
+Ex. copyrights, footer navbars, and author bios at the end of blog posts.
+
+They behave in the same way headers behave,
+when they're associated with the nearest sectioning element.
+
+They can go inside sections, articles, or body elements.
+*/
+
+/****
+ASIDE
+****/
+
+/*
+While headers and footers are ways to add extra info to an article, we sometimes want to
+remove info from an article.
+
+An <aside> element removes info from an article
+Ex. a sponsored blog post might contain an advertisement about the sponsoring company
+which is somehing that shouldn't belong as part of the article text.
+
+Although it's inside of an <article> element, machine readers know that it's only tangentially
+related to the article content.
+
+Asides are also useful for highlighting definitions, stats, or quotes.
+Note: if it looks different from the rest of the article, it's probably an aside.
+
+When used outside of an <article> element, an <aside> is associated with the page as a
+whole (similar to a <header> and <footer>). In this instance, it can make for a useful
+site-wide sidebar.
+
+<asides> are also useful for adding CSS hooks.
+*/
+
+/***************
+DIVS FOR LAYOUTS
+***************/
+
+/*
+Semantic HTML gives meaning to the content and helps with SEO, there will be times in
+which a container element is needed in place of a semantic HTML element.
+
+A div would work for a container element.
+Ex: center a page using auto-margin by wrapping a whole page in a container.
+this example is for presentation purposes only.
+
+It's especially relevant for flexboxes, since it uses a lot of <div>'s to group flex items
+correcly. There are times in which the occasional <section> or <nav> is appropiate for flex
+items, but usually <div> elements are for the presentational purposes in a flexbox layout
+
+Don't use semantic elements for presentational styling, use a <div> instead.
+*/
+
+/***
+TIME
+***/
+
+/*
+<time> elements represent either a time of a day or a calendar date.
+They provide a machine-readable date that makes it possible for browsers to automatically
+links it to users' calendars and help search engines clearly identify specific dates.
+
+Machine-readable data is defined in the datetime attribute. This attribute goes from the
+largest time period to the smallest: year, month, then day. It can even go on the time
+(24-hour time clock) and also the specific timezone.
+Ex. <time datetime='2017-11-8 21:46 0500'></time>
+					year month day time timezone (EST)
+
+<time> doesn't deal with the overall structure of a document.
+*/
+
+/******
+ADDRESS
+******/
+
+/*
+<address>is an element that like <time> doesn't deal with the overall
+structure of a document. It simply embellishes the parent <article> or <body> element with
+some metadata. An <address> defines contact information for the author of the article
+or web page in question. This element should not be used for arbitrary physical addresses.
+
+Ex. Using an author's email address
+
+By default, <address> is styled the same way that <em> is styled, but it can be changed
+with CSS rules.
+*/
+
+/******************
+FIGURE & FIGCAPTION
+******************/
+
+/*
+<figure>: represents a self-contained 'figure
+Ex. diagrams, illustrations, or a code snippet
+
+<figcaption>: This is an optional element, it's a caption with its parent <figure> element.
+
+Ex. A common use for both elements is to add visible descriptions to <img> elements in an
+article.
+
+The alt attribute (img element) is closely related to the <figcaption> element.
+alt should serve as a text REPLACEMENT for the image.
+figcaption is a supporting DESCRIPTION with either the image or its text-based equivalent.
+
+If using <figcaption> in the above manner, the img's alt attribute can be safely omitted
+wihout harming your SEO. Depending on what needs to be done, it can be more covenient
+(even less redundant) to have visible <figcaption>'s that describe them as opposed to
+invisible alt attributes.
+*/
+
+/**************
+LEGACY BROWSERS
+**************/
+
+/*
+Semantic HTML elements were introduced in HTML5. All modern browsers recognize
+them. Adding display: block for new semantic elements will make them behave like <div>'s.
+This is used in most global CSS stylesheets which will make these new semantic
+elements behave like <div> elements (block boxes/elements) in legacy browsers.
+*/
+
+section,
+article,
+aside,
+footer,
+header,
+nav {
+	display: block;
+}

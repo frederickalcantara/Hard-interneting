@@ -1,0 +1,451 @@
+/********
+WEB FONTS
+********/
+
+/*
+Web typography: apperance of all the text on your website.
+It includes basic CSS properties like what font to use and whether it should be italic or bold.
+Typography is mainly the space between and around letters, words, and lines. It's the size of
+different runs of text in relation to one another, and the history behind each font family.
+
+WEB FONT FILES:
+.svg: very old safari (iOS and Desktop) (LEGACY BROWSER FONT)
+.eot: Internet Explorer (LEGACY BROWSER FONT)
+.ttf: Everything except IE (LEGACY BROWSER FONT)
+.woff: Newer browsers
+
+Over 90% of modern browsers support .woff fonts. There is also support for its next evolution: .woff2
+WOFF2 is similar to WOFF, but offers a huge reduction in file size = better performance.
+
+3 Places to find Web Fonts:
+  1. Font Squirrel
+  2. Google Fonts
+  3. Fontspring
+*/
+
+/***********************
+LOCALLY HOSTED WEB FONTS
+***********************/
+
+/*
+@font-face: at-rule for CSS fonts
+
+font-family: property that defines how we'll refer to this font later on.
+This is an internal label, so it can be any name you want.
+It doesn't NEED to relate to the official name of the font.
+It's best practice to use a generic name of the font
+
+src: property that defines the path to a font file via url().
+The url() path can be absolute, relative, or root-relative
+If a a relative path is used, it will always be relative to the css file, not the HTML document.
+THe format() notation lets browsers know which web font file format it is.
+*/
+
+/***************************
+FONT FAMILIES AND FONT FACES
+***************************/
+
+/*
+A single Font Family is made up of multiple font 'faces'.
+
+Each font face has a different weight or style in the family.
+
+Weight: boldness of a particular face
+Style: roman (upgright), italic, condensed, extended, or some other variant in the family.
+
+In CSS, Font weight are expressed as numeric values between 100 and 900:
+
+900: 'Black'
+800: 'Extra Bold'
+700: 'Bold'
+600: 'Semi Bold'
+400: 'Regular
+300: 'Light'
+200: 'Extra Light
+
+High-quality font families have a uniqueness to each letter based on their style.
+*/
+
+/**************************
+EXTERNALLY HOSTED WEB FONTS
+**************************/
+
+/*
+External hosting via Google Fonts. It skips downloading and embedding the web font.
+
+Google Fonts are a quick and easy way of getting external fonts,
+but professional sites should typically use locally hosted web fonts.
+You have a lot more font flexibilty and better performance and reliability
+if you've optimized the rest of your site correctly.
+
+Never include many web fonts on a real web page as it can take forever to render.
+
+NOTE: Find a balance between performance (fewer web fonts) and a beautifully typeset document (more web fonts)
+*/
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Light-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: 300;
+
+  /* The Correct way of using multiple font faces */
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-LightItalic-webfont.woff') format('woff');
+  font-style: italic;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Bold-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+}
+
+/*
+You can use the Roboto font-family property, then style via font weight or font style
+Use the same name for a font-family with multiple properties.
+
+Human-friendly keywords for font-weight:
+normal (400) and bold (700)
+*/
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.8em;
+  color: #5D6063;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3em;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+header {
+  text-align: center;
+  color: #FFF;
+}
+
+nav {
+  background-color: #54575A;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+nav li {
+  list-style-type: none;
+
+  width: 50%;
+  padding-top: .5em;
+  padding-bottom: .5em;
+
+  border-top: 1px solid #888F95;
+}
+
+nav li:nth-of-type(1),
+nav li:nth-of-type(2) {
+  border-top: none;
+}
+
+nav li:nth-of-type(2n) {
+  border-left: 1px solid #888F95;
+}
+
+nav li.selected {
+  color: #54A5C4;
+}
+
+nav a:link,
+nav a:visited {
+  color: #888F95;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:visited:hover,
+nav a:active,
+nav a:visited:active {
+  color: #54A5C4;
+  text-decoration: underline;
+}
+
+
+.hero {
+  padding-top: 9em;
+  padding-bottom: 9em;
+  background-color: #5D6063;
+}
+
+.hero h1 {
+  font-size: 50px;
+}
+
+
+.section {
+  padding: 4em 1em;
+
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+.section h2 {
+  font-size: 30px;
+  margin-bottom: .7em;
+}
+
+.section--gray {
+  border-top: 1px solid #D6D9DC;
+}
+
+.section--blue {
+  border-top: 1px solid #B2D6FF;
+}
+
+.section--blue h2 {
+  color: #5995DA;
+}
+
+.section--red {
+  border-top: 1px solid #F09A9D;
+}
+
+.section--red h2 {
+  color: #D55C5F;
+}
+
+.section:first-of-type {
+  border-top: none;
+}
+
+.section p,
+.section ul,
+.section ol,
+.section figure {
+  margin-bottom: 1em;
+}
+
+.section p:last-child,
+.section ul:last-child,
+.section ol:last-child,
+.section figure:last-child {
+  margin-bottom: 0;
+}
+
+.button:link,
+.button:visited {
+  display: block;
+  text-decoration: none;
+
+  color: #FFF;
+  background-color: #4A90E2;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+
+  margin: 1.8em auto;
+}
+
+.button:hover,
+.button:visited:hover {
+  color: #FFF;
+  background-color: #6AA9F4;
+}
+
+.button:active,
+.button:visited:active {
+  color: #FFF;
+  background-color: #3F7CC4;
+}
+
+
+@media only screen and (min-width: 580px) {
+  .section {
+    margin: 4em auto;
+    padding: 2.5em 3em;
+  }
+  .section--gray:first-of-type,
+  .section--gray {
+    border: 1px solid #D6D9DC;
+  }
+  .section--blue:first-of-type,
+  .section--blue {
+    border: 1px solid #B2D6FF;
+  }
+  .section--red:first-of-type,
+  .section--red {
+    border: 1px solid #F09A9D;
+  }
+}
+
+
+@media only screen and (min-width: 750px) {
+  nav {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  nav li {
+    width: auto;
+    border-top: none;
+  }
+
+  nav li:nth-of-type(2n) {
+    border-left: none;
+  }
+}
+
+em, strong {
+  font-synthesis: none;
+}
+
+/****************
+PARAGRAPH INDENTS
+****************/
+
+/*
+Seperating paragraphs is paramount to typography.
+
+2 solutions to seperate paragraphs:
+  1. Use a first-line indent
+  2. Use a margin between paragraphs
+
+Never use both indent and a margin to seperate a paragraph
+*/
+
+/*************
+TEXT ALIGNMENT
+*************/
+
+/*
+Good text alignment takes into account human physiology.
+It allows users to make it easier for them to read you contant
+by giving their eyes an anchor to jump to when they move from line to line
+
+LEFT ALIGNMENT
+
+Most text should be left-aligned because it gives readers a vertical anchor to jump back to on every line.
+Ex. Long runs runs of text should always be left-aligned
+
+Shorts runs of text and headings have a bit more leeway.
+Left-alignment is the default value for text-align
+
+This advice is applicable for languages written from left to right
+If the language is written from right to left. then swap all this advice
+with the Right Alignment advice.
+
+CENTER ALIGNMENT
+
+Center-aligned text doesn't have the same anchor as left-align,
+this makes it easier for your eye to get lost when it tries to jump on the next line.
+
+Center-align is best suited for short line lengths and for special content
+such as poems, lyrics, and headings
+
+NOTE: text-alignment should be consistent throughout a web page.
+
+RIGHT ALIGNMENT
+
+Another consideration when choosing text alignment is the relationship it creates with the surrounding elements.
+
+Like centered-text, right alignment should only be reserved for special design scenarios.
+
+JUSTIFIED TEXT
+
+Justified text is created by subtly adjusting the space between words/letters
+and splitting long words with hyphens until each line is the same width.
+
+Uneven spaces make it harder for the eye to move horizontally across the text.
+Most browsers don't have any kind of built-in hyphenation,
+so it's best to avoid justified text in HTML documents.
+*/
+
+/********************
+VERTICAL TEXT SPACING
+********************/
+
+/*
+3 CSS Properties involved with spacing:
+
+  1. margin/padding-top
+  2. margin/padding-bottom
+  3. line-height AKA leading
+
+line-height: property that determines the amount of space between lines in the SAME PARAGRAPH
+
+2 Priniciples for 'vertical rhythm':
+
+  1. Give things enough space to breathe
+  2. Use CONSISTENT spacing throughout the page
+
+*/
+
+/**********
+LINE LENGTH
+**********/
+
+/*
+Line length or Measure is the horizontal length of your text.
+Think of this as the number of characters or words that fit into a single line.
+
+Line Length uses these 3 properties:
+
+  1. width
+  2. margin/padding-left
+  3. margin/padding-right
+
+NOTE: a good rule of thumb is to limit the number of characters on a single line to around 80.
+This like alignment, can affect the readbility of your content.
+
+It takes more energy for your eye to move from the left edge of a paragraph to the right.
+Additionaly, the farther it has to scan, the faster your eye gets tired.
+Longer lines make it easier to get lost when you finish and need to jump back to the next line.
+
+This is the main reason why websites used fixed-width layouts or split content into multiple columns on wider screens.
+Without limiting the width of the page, or dividing it into manageable columns, then line length becomes very long.
+
+The goal of good web typography is to make it as easy as possible for visitors to digest your content.
+*/
+
+/********************************
+OTHER BASIC TYPOGRAPHY GUIDELINES
+********************************/
+
+/*
+Basic Guidelines:
+  1. Use a font-size between 14px and 20px for the body element.
+  2. Use “curly quotes” and apostrophes with the &lsquo;, &rsquo;, &ldquo;, and &rdquo; HTML entities.
+  3. Use proper dashes ( &ndash; (-), &mdash; (--) ) and other symbols (&copy;).
+  4. Don’t use text-decoration: underline except for hover states.
+  5. Use REAL italic fonts over synthesized ones if not it’s too much of a performance burden.
+*/

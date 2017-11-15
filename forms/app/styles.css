@@ -1,0 +1,383 @@
+/***********
+FORM SUMMARY
+***********/
+
+/*
+Two ways to process forms:
+
+1. Using the action attribute to send the form data to a backend URL, which then redirects to a success or error page.
+
+2. Using AJAX queries to submit the form without leaving the page. Success or error messages are displayed on the same
+page by manipulating the HTML using JS.
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	color: #5D6063;
+	background-color: #EAEDF0;
+	font-family: "Helvetica", "Arial", sans-serif;
+	font-size: 16px;
+	line-height: 1.3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.speaker-form-header {
+	text-align: center;
+	background-color: #F6F7F8;
+	border: 1px solid #D6D9DC;
+	border-radius: 3px;
+	width: 80%;
+	margin: 40px 0;
+	padding: 50px;
+}
+
+.speaker-form-header h1 {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+/*********
+HTML FORMS
+*********/
+
+/*
+Every HTML form begins with the <form> element. THe most important attributes are action
+and method.
+
+action: attribute defines the URL that processes the form.
+This is where the input is collected by the form,
+which will then be sent when the users clicks a Submit button.
+This is a special URL defined by your web server taht knows how to process the data.
+Serverside software process the forms.
+
+method: attribute that can either be a post or get, both of with define how the form is
+submitted to the backend server. These two values determine how your server handles the form.
+
+Use post when you're changing data to the server.
+Use get only when you're getting data from the from the server.
+
+Using a blank value for the action attribute, we're telling the form to submit to the same URL.
+Combine this with the get method, this will let us inspect the contents of the form.
+*/
+
+.speaker-form {
+	background-color: #f6f7f8;
+	border: 1px solid #D6D9DC;
+	border-radius: 3px;
+
+	width: 80%;
+	padding: 50px;
+	margin: 0 0 40px 0;
+}
+
+/****************
+TEXT INPUT FIELDS
+****************/
+
+/*
+The <input/> element is a way to collect user input.
+Adding a container <div> is a way to help with styling, it's good practice for seperating input elements
+
+<label> is the semantic HTML element for forms.
+A label's 'for' attribute MUST MATCH the 'id' attribute of its associated <input/> element.
+
+The <input/> element creates a text field. This is different from other elements because the <input>
+can change dramatically depending on its 'type' attribute, but it creates some kind of user input.
+
+Note: ID selectors are bad, the id attribute is here only for connecting an <input> to a <label> element.
+
+An <input/> element represents a 'variable' that gets sent to the backend server.
+The name attribute defines the name of the variable sent to the server.
+The value is whatever the user entered into the text field.
+
+Note: this value can be pre-populated by adding a 'value' attribute with a value to an <input/> element
+
+Inputs can be styled like any other HTML element.
+
+input[type='text'] is a new type of CSS selector called an 'attirbute selector'. It matches <input/>
+elements that have a type attribute equal to text. input[type='text']
+This allows you to target only text input fields as opposed to other input fields
+such as <input type='radio'/> for radio buttons.
+
+All form styling should be namespaced with descendant selectors, isolating <input/> and <label>
+styles like this makes it easier to create different kinds of forms.
+*/
+
+.form-row {
+	margin-bottom: 40px;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.form-row input[type='text'],
+.form-row input[type='email'] {
+	background-color: #FFFFFF;
+	border: 1px solid #D6D9DC;
+	border-radius: 3px;
+	width: 100%;
+	padding: 7px;
+	font-size: 14px;
+}
+
+.form-row label {
+	margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 700px) {
+	.speaker-form-header,
+	.speaker-form {
+		width: 600px;
+	}
+
+	.form-row {
+		flex-direction: row;
+		align-items: flex-start; /*Avoids stretching*/
+		margin-bottom: 20px;
+	}
+
+	.form-row input[type='text'],
+	.form-row input[type='email'],
+	.form-row select,
+	.form-row textarea {
+		width: 250px;
+		height: initial;
+	}
+
+	.form-row label {
+		text-align: right;
+		width: 120px;
+		margin-top: 7px;
+		padding-right: 20px;
+	}
+
+	.legacy-form-row {
+		margin-bottom: 10px;
+	}
+
+	.legacy-form-row legend {
+		width: 120px;
+		text-align: right;
+		padding-right: 20px;
+	}
+
+	.legacy-form-row legend {
+		float: left;
+	}
+
+	.form-row .instructions {
+		margin-left: 120px;
+	}
+
+	.form-row .checkbox-label {
+		margin-left: 120px;
+		width: auto;
+	}
+
+	.form-row button {
+		margin-left: 120px;
+	}
+
+}
+
+/*****************
+EMAIL INPUT FIELDS
+*****************/
+
+/*
+adding a input type of 'email' checks if the user entered an email address.
+placeholder: an attribute that displays some default text when the <input/> element is empty.
+
+Other attibutes to take note of for inputs are: required, minlength, maxlength, and pattern.
+
+Adding a :valid and :invalid pseudo-class lets us know when users entered the "right" or "wrong" value.
+Both pseudo-classes lets us style these states independently.
+
+Both pseudo-classes will be seen once we include a submit button.
+
+:focus: pseudo-class that selects elements that user is currently filling out.
+*/
+
+.form-row input[type='text']:invalid,
+.form-row input[type='email']:invalid {
+	border: 1px solid #D55C5F;
+	color: #D55C5F;
+	box-shadow: none;
+}
+
+/************
+RADIO BUTTONS
+************/
+
+/*
+radio: an input type property that tranforms inputs into a radio button.
+Radio buttons operate in groups, allowing the user to choose one of many predefined options.
+
+<fieldset>: an element that wraps around the radio buttons.
+<legend>: an element that is a label for the <fieldset>
+<label>: label element that is associated with each radio button.
+
+always the same 'name' attributes (value) for each radio button in a group.
+Use different 'value' attributes (value) for each radio button.
+
+Unlike text fields, users can't enter custom values into a radio button.
+This is why each radio button needs an explicit 'value' attribute.
+This 'value' attribute gets sent to the server when the users submits the form.
+
+NOTE: it's important that each radio button has the same 'name' attribute,
+because this lets the form know that they are part of the same group.
+
+checked: new attribute, 'boolean' attribute. It never takes a value,
+it either exists or doesn't exist on an input element.
+If the checked attribute does exist, then the element will be selected/checked by default
+*/
+
+.legacy-form-row {
+	border: none;
+	margin-bottom: 40px;
+}
+
+.legacy-form-row legend {
+	margin-bottom: 15px;
+}
+
+.legacy-form-row .radio-label {
+	display: block;
+	font-size: 14px;
+	padding: 0 20px 0 10px;
+}
+
+.legacy-form-row input[type='radio'] {
+	margin-top: 2px;
+}
+
+.legacy-form-row .radio-label,
+.legacy-form-row input[type='radio'] {
+	float: left;
+}
+
+/*******************************
+SELECT ELEMENTS (DROPDOWN MENUS)
+*******************************/
+
+/*
+<select>: element that represents the dropdown menu.
+<option> elements that represent each option/item for the <select> element.
+
+'name' and 'value' attributes get passed to the backend server.
+The name is applied to the <select> element
+The value is applied to the <option> element
+
+<select> elements are hard to style like radio buttons are.
+<select> behaviors change across devices and browsers.
+
+-webkit prefix applies ONLY to Safari and Chrome (which are powered by the WebKit rendering engine)
+-moz prefix applies ONLY to Firefox
+
+NOTE: If you need custom styles, its better to use radio button or JS UI widgets such as
+Bootstrap Dropdowns or jQuery Selectmenu's
+*/
+
+.form-row select {
+	width: 100%;
+	padding: 5px;
+	font-size: 14px;
+	-webkit-appearance: none;
+}
+
+/*******
+TEXTAREA
+*******/
+
+/*
+<textarea>: element that creates a multi-line text field designed to collect large amounts of text from the user.
+Ex. good for biographies, essays, and comments.
+
+<textarea> needs a closing tag to it. If you want to add any default text, it needs to go INSIDE the tags
+as opposed to a 'value' attribute.
+
+Most browsers let the user resize the <textarea> elements to whatever dimensions they want.
+resize: none disblaes resizing the <textarea> dimensions.
+
+*/
+
+.form-row textarea {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-style: 14px;
+
+	border: 1px solid #D6D9DC;
+	border-radius: 3px;
+
+	min-height: 200px;
+	margin-bottom: 10px;
+	padding: 7px;
+	resize: none;
+}
+
+.form-row .instructions {
+	color: #999999;
+	font-style: 14px;
+	margin-bottom: 30px;
+}
+
+/*******
+CHECKBOX
+*******/
+
+/*
+Checkboxes are like radio button, but instead of only picking one option, users can pick as many as they want.
+Since the browser doesn't need to know which checkboxes are part of the same group,
+a <fieldset> wrapper or shared 'name' attributes aren't necessary.
+
+<label> elements are used differently in checkboxes.
+Instead of being a seperate element, they wrap around the corresponding <input> elements
+You still want to use the 'for' attribute.
+
+By wrapping both the checkbox and label text, we're able to use a width: auto to make the entire form field
+be on a single line. (auto width makes the box match the size of its contents)
+*/
+
+.form-row .checkbox-label {
+	margin-bottom: 0;
+}
+
+/************
+SUBMIT BUTTON
+************/
+
+/*
+<button>: element that represents the button that will submit the conatining <form>
+
+Clicking the button tells the browser to validate all of the <input/> elements in the form and submit it to the
+'action' URL if there aren't validation problems.
+*/
+
+.form-row button {
+	font-size: 16px;
+	font-weight: bold;
+
+	color: #ffffff;
+	background-color: #5995da;
+
+	border: none;
+	border-radius: 3px;
+
+	padding: 10px 40px;
+	cursor: pointer;
+}
+
+.form-row button:hover {
+	background-color: #76aeed;
+}
+
+.form-row button:active {
+	background-color: #407fc7;
+}

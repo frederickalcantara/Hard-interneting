@@ -1,0 +1,183 @@
+/***************
+DEFAULT LAYOUTS
+***************/
+
+/*
+Each div will take on the width of the parent's width if their width isn't altered
+*/
+
+/*****
+FLOATS
+******/
+
+/*
+Floats control the horizontal position of an element.
+They shift an element based on their designated position,
+and they also tell the surrounding area to lay underneath the
+floated element.
+
+Floats can shift left or right.
+If you want to override a float declaration,
+then you can cancel it with the none value
+which will revert it to default flow.
+
+Auto margin: 0 auto will center block elements
+while text-align will shift inline elements
+to the left, center, or right accordingly.
+
+When you float multiple elements in the same direction,
+they'll stack horizontally instead of wrapping around it.
+This depends on the width of the parent element.
+
+The height of floated elements don't contribute to the
+vertical position of the footer
+
+Floated boxes are removed from the normal flow of the page.
+The height of floated elements don't contribute to the
+vertical position of the footer, so it simply sticks itself
+below the last element that wasn't floated.
+
+Clearing a float tells a block to ignore floats that appear
+before it. Instead of flowing around the floated box,
+a cleared element always appear after any floats.
+It forces the box back into the default vertical flow of the page.
+
+Normally, you want to clear both the left and right floats.
+You can clear one or the other with left or right values.
+
+If you move an outside of the group of floated elements
+will break the clear fix. Which will give the floated
+div a height of 0
+
+Clearing floates only fixes the height when there's an element
+inside of a container element that we add a float property.
+
+Adding the overflow: hidden declaration to a container div
+will recognize the height of an floated element it contains.
+
+Clears and overflows are necessary for their backgrounds to show up
+*/
+
+/****************
+FULL BLEED LAYOUT
+*****************/
+
+/*
+Adding a container div on top of a floated div will allow for
+a 'full bleed' layout to allow for a background to take up the
+whole page.
+
+The overflow: hidden line is necessary to force the
+container div to be mindful of the height of floated elements, without
+it we wouldn't see our bgc because .container would have 0 height.
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.page {
+	width: 900px;
+	margin: 0 auto;
+}
+
+.container {
+	overflow: hidden;
+	background-color: #eaedf0;
+}
+
+.menu {
+	height: 100px;
+	background-color: #b2d6ff;
+}
+
+.sidebar {
+	float: left;
+	height: 300px;
+	width: 200px;
+	background-color: #f09a9d;
+}
+
+.content {
+	float: left;
+	width: 650px;
+	height: 500px;
+	background-color: #f5cf8e;
+}
+
+.footer {
+	clear: both;
+	overflow: hidden;
+	background-color: #d6e9fe;
+}
+
+/******************
+EQUAL-WIDTH COLUMNS
+******************/
+
+/*
+Percentages in CSS are relative to the width of the parent element.
+
+When there isn't enough room to stack a floated element horizontally,
+it pops down to the next line.
+
+Overflow:hidden will accomodate for any number of grid items. We can
+use this same technique to make grids of any size. You do this by
+replacing the explicit height with an overflow: hidden declaration
+*/
+
+.column {
+	float: left;
+	width: 31%;
+	margin: 20px 1.15%;
+	height: 160px;
+	background-color: #b2d6ff;
+}
+
+/*****************
+FLOATS FOR CONTENT
+*****************/
+
+/*
+Styling individual HTML components that go inside a page structure
+
+The overflow:hidden declaration makes teh text 'horizontally cleared' by the floated image.
+Without it, the last line/s of text would hang underneath an image
+*/
+
+.content {
+	padding: 20px;
+}
+
+.article-image {
+	float: left;
+	width: 300px;
+	height: 200px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+p {
+	margin-bottom: 20px;
+}
+
+.avatar {
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin: 25px;
+	border-radius: 40px;
+	background-color: #D6E9FE;
+}
+
+.username {
+	margin-top: 30px;
+}
+
+.comment {
+	margin: 10px;
+	overflow: hidden;
+	/* This is important */
+}
